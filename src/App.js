@@ -1,7 +1,16 @@
 import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Navbar from './components/Layout/Navbar';
 
 function App() {
-	return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+	return (
+		<Router>
+			<div className="flex flex-col justify-between h-screen">
+				<Navbar />
+				<main>content</main>
+			</div>
+		</Router>
+	);
 }
 
 export default App;

@@ -1,25 +1,16 @@
-import { useEffect, useState } from 'react';
-import { RevolvingDot } from 'react-loader-spinner';
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import { useEffect, useContext } from 'react';
+import GithubContext from '../../context/github/GithubContext';
 import UserList from './UserList';
+import { RevolvingDot } from 'react-loader-spinner';
+
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 const UserResult = () => {
-	const [users, setUsers] = useState([]);
-	const [loading, setLoading] = useState(true);
+	const { users, loading, fetchUser } = useContext(GithubContext);
+
 	useEffect(() => {
 		fetchUser();
 	}, []);
-
-	const fetchUser = async () => {
-		const res = await fetch(`https://api.github.com/users`, {
-			headers: {
-				Authorization: `${process.env.REACT_APP_GITHUB_TOKEN}`,
-			},
-		});
-		const data = await res.json();
-		setUsers(data);
-		setLoading(false);
-	};
 
 	return loading ? (
 		<div className="flex justify-center">

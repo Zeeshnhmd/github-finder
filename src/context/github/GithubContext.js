@@ -1,4 +1,5 @@
-import { createContext, useState } from 'react';
+import { createContext, useReducer } from 'react';
+import githubReducer from './GithubReducer';
 
 const GithubContext = createContext();
 
@@ -6,8 +7,21 @@ const GithubContext = createContext();
 // const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 
 export const GithubProvider = ({ children }) => {
-	const [users, setUsers] = useState([]);
-	const [loading, setLoading] = useState(true);
+	/**
+	 * * creating initialState
+	 */
+
+	const initialState = {
+		users: [],
+		loading: true,
+	};
+
+	/**
+	 * * using the (useReducer) hook
+	 * * this take in two things 1st is the reducers we are using (githubReducer), and 2nd is intialState
+	 */
+
+	const [state, dispatch] = useReducer(githubReducer, initialState);
 
 	const fetchUser = async () => {
 		const res = await fetch(`https://api.github.com/users`, {
@@ -16,12 +30,27 @@ export const GithubProvider = ({ children }) => {
 			},
 		});
 		const data = await res.json();
-		setUsers(data);
-		setLoading(false);
+
+		/**
+		 * * we are using the dispatch to dispatch the data
+		 * * here we are setting the type, and setting the data as payload (Which we are receiving from the API)
+		 * * we can name the payload anything but we are writing (payload) just for the name convention
+		 */
+
+		dispatch({
+			type: 'GET_USERS',
+			payload: data,
+		});
 	};
 
 	return (
-		<GithubContext.Provider value={{ users, loading, fetchUser }}>
+		/**
+		 * * and we have to set the values like this
+		 */
+
+		<GithubContext.Provider
+			value={{ users: state.users, loading: state.loading, fetchUser }}
+		>
 			{children}
 		</GithubContext.Provider>
 	);

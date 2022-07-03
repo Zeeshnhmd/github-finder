@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import GithubContext from '../../context/github/GithubContext';
 import UserList from './UserList';
 import { RevolvingDot } from 'react-loader-spinner';
@@ -6,11 +6,7 @@ import { RevolvingDot } from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 const UserResult = () => {
-	const { users, loading, fetchUser } = useContext(GithubContext);
-
-	useEffect(() => {
-		fetchUser();
-	}, []);
+	const { users, loading } = useContext(GithubContext);
 
 	return loading ? (
 		<div className="flex justify-center">

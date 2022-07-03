@@ -34,18 +34,22 @@ export const GithubProvider = ({ children }) => {
 	};
 
 	/**
-	 * * get initial users (testing purposes)
+	 * * get search users
 	 */
 
-	const fetchUser = async () => {
+	const searchUsers = async (text) => {
 		setLoading();
 
-		const res = await fetch(`https://api.github.com/users`, {
+		const params = new URLSearchParams({
+			q: text,
+		});
+
+		const res = await fetch(`https://api.github.com/search/users?${params}`, {
 			headers: {
 				Authorization: `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`,
 			},
 		});
-		const data = await res.json();
+		const { items } = await res.json();
 
 		/**
 		 * * we are using the dispatch to dispatch the data
@@ -55,7 +59,7 @@ export const GithubProvider = ({ children }) => {
 
 		dispatch({
 			type: 'GET_USERS',
-			payload: data,
+			payload: items,
 		});
 	};
 
@@ -65,7 +69,7 @@ export const GithubProvider = ({ children }) => {
 		 */
 
 		<GithubContext.Provider
-			value={{ users: state.users, loading: state.loading, fetchUser }}
+			value={{ users: state.users, loading: state.loading, searchUsers }}
 		>
 			{children}
 		</GithubContext.Provider>

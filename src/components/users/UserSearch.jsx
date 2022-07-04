@@ -1,6 +1,8 @@
 import { useState, useContext } from 'react';
 import GithubContext from '../../context/github/GithubContext';
 
+import toast from 'react-hot-toast';
+
 const UserSearch = () => {
 	const [text, setText] = useState('');
 
@@ -16,7 +18,8 @@ const UserSearch = () => {
 		 */
 		e.preventDefault();
 		if (text === '') {
-			alert('Please enter something');
+			// alert('Please enter something', 'error');
+			toast.error('Please enter something');
 		} else {
 			searchUsers(text);
 			/**

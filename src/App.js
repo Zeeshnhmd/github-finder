@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import Navbar from './components/Layout/Navbar';
 import Footer from './components/Layout/Footer';
 import Home from './Pages/Home';
@@ -6,12 +7,14 @@ import About from './Pages/About';
 import NotFound from './Pages/NotFound';
 
 import { GithubProvider } from './context/github/GithubContext';
-import { AlertProvider } from './context/alert/AlertContext';
 
 function App() {
 	return (
-		<GithubProvider>
-			<AlertProvider>
+		<>
+			<div>
+				<Toaster position="top-left"></Toaster>
+			</div>
+			<GithubProvider>
 				<Router>
 					<div className="flex flex-col justify-between h-screen">
 						<Navbar />
@@ -26,8 +29,8 @@ function App() {
 						<Footer />
 					</div>
 				</Router>
-			</AlertProvider>
-		</GithubProvider>
+			</GithubProvider>
+		</>
 	);
 }
 

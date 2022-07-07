@@ -14,7 +14,7 @@ const UserList = ({ person: { login, avatar_url } }) => {
 					<h1 className="card-title pb-1">{login}</h1>
 					<Link
 						className="text-base-content text-opacity-40"
-						to={`/users/${login}`}
+						to={`/user/${login}`}
 					>
 						Visit Profile
 					</Link>

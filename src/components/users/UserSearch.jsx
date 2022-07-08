@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+import { AiFillCloseCircle } from 'react-icons/ai';
 import GithubContext from '../../context/github/GithubContext';
 
 import toast from 'react-hot-toast';
@@ -18,33 +19,44 @@ const UserSearch = () => {
 		 */
 		e.preventDefault();
 		if (text === '') {
-			// alert('Please enter something', 'error');
 			toast.error('Please enter something');
 		} else {
 			searchUsers(text);
-			/**
-			 * * setting the input field back to empty
-			 */
-			setText('');
 		}
 	};
 
+	const emptyInputAndClearState = () => {
+		clearUsers();
+		/**
+		 * * setting the input field back to empty
+		 */
+		setText('');
+	};
+
 	return (
-		<div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 mb-10">
-			<div>
+		<div className="grid justify-items-center mb-9 ">
+			<div className="w-full md:w-3/4 lg:w-3/4 xl:w-2/4">
 				<form onSubmit={handleSubmit}>
 					<div className="form-control">
-						<div className="relative">
+						<div className="relative ">
 							<input
 								type="text"
-								className="w-full pr-40 bg-gray-200 input input-lg text-black"
+								className="w-full pr-40 bg-accent input input-lg text-white focus:outline-none"
 								placeholder="Search"
 								value={text}
 								onChange={handleChange}
 							/>
+							{users.length > 0 && (
+								<button
+									onClick={emptyInputAndClearState}
+									className=" absolute top-4 right-40 z-10"
+								>
+									<AiFillCloseCircle className="text-3xl text-white" />
+								</button>
+							)}
 							<button
 								type="submit"
-								className="absolute top-0 right-0 rounded-l-none w-36 btn btn-lg focus:border-none"
+								className="absolute top-0 right-0 rounded-l-none w-36 btn-lg btn focus:border-none bg-secondary text-primary hover:bg-secondary"
 							>
 								Go
 							</button>
@@ -56,7 +68,7 @@ const UserSearch = () => {
 			{/* so here what we are saying is that if their is a user then only show the
 			clear button else don't show the clear button */}
 
-			{users.length > 0 && (
+			{/* {users.length > 0 && (
 				<div>
 					<button
 						onClick={clearUsers}
@@ -65,7 +77,7 @@ const UserSearch = () => {
 						Clear
 					</button>
 				</div>
-			)}
+			)} */}
 		</div>
 	);
 };

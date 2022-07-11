@@ -58,7 +58,7 @@ const UserSearch = () => {
 								type="submit"
 								className="absolute top-0 right-0 rounded-l-none w-36 btn-lg btn focus:border-none bg-secondary text-primary hover:bg-secondary"
 							>
-								Go
+								Hit It
 							</button>
 						</div>
 					</div>

@@ -44,8 +44,11 @@ const User = () => {
 				</div>
 			) : (
 				<div className="w-full mx-auto lg:w-10/12">
-					<div className="mb-4">
-						<Link to="/" className="btn btn-ghost">
+					<div className="mb-8">
+						<Link
+							to="/"
+							className=" px-4 py-3  hover:bg-accent rounded transition duration-150 text-white"
+						>
 							Back to Search
 						</Link>
 					</div>
@@ -53,7 +56,11 @@ const User = () => {
 						<div className="custom-card-image mb-6 md:mb-0">
 							<div className="rounded-lg shadow-xl card image-full">
 								<figure>
-									<img src={avatar_url} alt="userimage" />
+									<img
+										src={avatar_url}
+										alt="userimage"
+										className="object-cover"
+									/>
 								</figure>
 								<div className="card-body grid content-end">
 									<h2 className="card-title mb-0">{name}</h2>
@@ -123,39 +130,39 @@ const User = () => {
 							</div>
 						</div>
 					</div>
-					<div className="w-full py-5 mb-6 rounded-lg shadow-md bg-base-100 stats">
+					<div className="w-full py-5 mb-6 rounded-lg shadow-md bg-secondary text-primary stats">
 						<div className="stat">
-							<div className="stat-figure text-secondary">
+							<div className="stat-figure ">
 								<FaUsers className="text-3xl md:text-5xl" />
 							</div>
-							<div className="stat-title pr-5">Followers</div>
+							<div className="pr-5 font-medium">Followers</div>
 							<div className="stat-value pr-5 text-3xl md:text-4xl">
 								{followers}
 							</div>
 						</div>
 						<div className="stat">
-							<div className="stat-figure text-secondary">
+							<div className="stat-figure ">
 								<FaUserFriends className="text-3xl md:text-5xl" />
 							</div>
-							<div className="stat-title pr-5">Following</div>
+							<div className="pr-5 font-medium">Following</div>
 							<div className="stat-value pr-5 text-3xl md:text-4xl">
 								{following}
 							</div>
 						</div>
 						<div className="stat">
-							<div className="stat-figure text-secondary">
+							<div className="stat-figure ">
 								<FaCode className="text-3xl md:text-5xl" />
 							</div>
-							<div className="stat-title pr-5">Public Repos</div>
+							<div className="pr-5 font-medium">Public Repos</div>
 							<div className="stat-value pr-5 text-3xl md:text-4xl">
 								{public_repos}
 							</div>
 						</div>
 						<div className="stat">
-							<div className="stat-figure text-secondary">
+							<div className="stat-figure ">
 								<FaStore className="text-3xl md:text-5xl" />
 							</div>
-							<div className="stat-title pr-5">Public Gists</div>
+							<div className="pr-5 font-medium">Public Gists</div>
 							<div className="stat-value pr-5 text-3xl md:text-4xl">
 								{public_gists}
 							</div>

@@ -1,13 +1,12 @@
 import { useEffect, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
-
 import { FaCode, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa';
 import { RevolvingDot } from 'react-loader-spinner';
 
 import GithubContext from '../context/github/GithubContext';
+import RepoList from '../components/repos/RepoList';
 
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
-import RepoList from '../components/repos/RepoList';
 
 const User = () => {
 	const { user, getUser, loading, repos, getRepos } = useContext(GithubContext);
@@ -16,7 +15,7 @@ const User = () => {
 
 	useEffect(() => {
 		getUser(params.login);
-		getRepos(params.login);
+		getRepos(params.login); //eslint-disable-next-line
 	}, []);
 
 	const {

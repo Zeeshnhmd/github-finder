@@ -19,7 +19,7 @@ const UserList = ({ person: { login, avatar_url } }) => {
 								height={50}
 							/>
 						) : (
-							<img src={avatar_url} alt="avatar" />
+							<img src={avatar_url} alt={login} />
 						)}
 					</div>
 				</div>

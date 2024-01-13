@@ -19,7 +19,7 @@ const UserSearch = () => {
 		 */
 		e.preventDefault();
 		if (text === '') {
-			toast.error('Please enter something');
+			toast.error('Please enter something', { position: 'top-center' });
 		} else {
 			searchUsers(text);
 		}
@@ -38,7 +38,7 @@ const UserSearch = () => {
 			<div className="w-full md:w-3/4 lg:w-3/4 xl:w-2/4">
 				<form onSubmit={handleSubmit}>
 					<div className="form-control">
-						<div className="relative ">
+						<div className="relative">
 							<input
 								type="text"
 								className="w-full pr-40 bg-accent input input-lg text-white focus:outline-none"

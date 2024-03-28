@@ -1,5 +1,7 @@
 # GitHub Explorer
 
+![mockup](./readme.png)
+
 ## Description
 
 GitHub Explorer is a web application that allows users to explore GitHub profiles, visit user profiles, and view their repositories and other details.
@@ -19,4 +21,4 @@ GitHub Explorer is a web application that allows users to explore GitHub profile
 - Navigate through user repositories
 - Responsive design with Tailwind CSS and Daisy UI components
 
-![mockup](./readme.png)
+
